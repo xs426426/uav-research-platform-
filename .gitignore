@@ -1,0 +1,64 @@
+# ============================================================================
+# UAV Research Platform - .gitignore
+# ============================================================================
+
+# === ROS ===
+devel/
+build/
+install/
+logs/
+.catkin_tools/
+.catkin_workspace
+*.pyc
+__pycache__/
+
+# === PX4 ===
+PX4-Autopilot/
+build/
+log/
+*.px4log
+*.ulg
+
+# === Gazebo ===
+.gazebo/
+*.world.backup
+
+# === Python ===
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+*.egg-info/
+.eggs/
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === 数据和模型 ===
+*.bag
+*.pcd
+*.ply
+datasets/
+weights/
+checkpoints/
+*.pt
+*.pth
+*.onnx
+
+# === 系统 ===
+.DS_Store
+Thumbs.db
+*.log
+
+# === 临时文件 ===
+tmp/
+temp/
+*.tmp
