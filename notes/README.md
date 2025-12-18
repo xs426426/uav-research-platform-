@@ -14,10 +14,10 @@
 - [5. 常用命令速查](./phase0/05_常用命令.md)
 
 ### [Phase 1: 路径规划](./phase1/README.md)
-- [1. A* 算法原理](./phase1/01_Astar算法.md)
-- [2. RRT/RRT* 算法原理](./phase1/02_RRT算法.md)
-- [3. 轨迹优化 (Minimum Snap)](./phase1/03_轨迹优化.md)
-- [4. 路径规划实战](./phase1/04_路径规划实战.md)
+- [1. A* 搜索算法](./phase1/01_Astar算法.md)
+- [2. RRT/RRT* 采样算法](./phase1/02_RRT算法.md)
+- [3. 碰撞检测方法](./phase1/03_碰撞检测.md)
+- [4. Minimum Snap 轨迹优化](./phase1/04_轨迹优化.md)
 
 ### Phase 2: 激光雷达里程计 (待学习)
 - FAST-LIO2 原理
