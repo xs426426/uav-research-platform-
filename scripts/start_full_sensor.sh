@@ -27,16 +27,17 @@ echo ""
 read -p "选择场景 (1-4，默认1): " choice
 
 case $choice in
-    1|"") WORLD="hospital" ;;
-    2) WORLD="small_warehouse" ;;
-    3) WORLD="bookstore" ;;
-    4) WORLD="empty" ;;
-    *) WORLD="hospital" ;;
+    1|"") WORLD="hospital"; X=0; Y=-5; Z=0 ;;
+    2) WORLD="small_warehouse"; X=0; Y=0; Z=0 ;;
+    3) WORLD="bookstore"; X=0; Y=-3; Z=0 ;;
+    4) WORLD="empty"; X=0; Y=0; Z=0 ;;
+    *) WORLD="hospital"; X=0; Y=-5; Z=0 ;;
 esac
 
 echo ""
 echo "启动配置:"
 echo "  场景: $WORLD"
+echo "  起始位置: X=$X, Y=$Y, Z=$Z"
 echo "  传感器: 深度相机 + 3D激光雷达"
 echo ""
 
@@ -67,4 +68,5 @@ echo ""
 
 roslaunch px4 mavros_posix_sitl.launch vehicle:=iris \
     sdf:=$(pwd)/Tools/sitl_gazebo/models/iris_full_sensor/iris_full_sensor.sdf \
-    world:=$(pwd)/Tools/sitl_gazebo/worlds/${WORLD}.world
+    world:=$(pwd)/Tools/sitl_gazebo/worlds/${WORLD}.world \
+    x:=$X y:=$Y z:=$Z
