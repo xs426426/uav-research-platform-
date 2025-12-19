@@ -1,0 +1,224 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="fire_scene_simple">
+    <!-- 光源 -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- 物理引擎 -->
+    <physics name='default_physics' default='0' type='ode'>
+      <gravity>0 0 -9.8066</gravity>
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+
+    <!-- ========== 完好的房屋 ========== -->
+    <include>
+      <uri>model://house_1</uri>
+      <name>house_1</name>
+      <pose>-15 10 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://house_2</uri>
+      <name>house_2</name>
+      <pose>-15 -10 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://house_3</uri>
+      <name>house_3</name>
+      <pose>15 10 0 0 0 3.14</pose>
+    </include>
+
+    <!-- ========== 消防车 ========== -->
+    <include>
+      <uri>model://fire_truck</uri>
+      <name>fire_truck</name>
+      <pose>0 -15 0 0 0 1.57</pose>
+    </include>
+
+    <!-- ========== 消防栓 ========== -->
+    <include>
+      <uri>model://fire_hydrant</uri>
+      <name>hydrant_1</name>
+      <pose>-5 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://fire_hydrant</uri>
+      <name>hydrant_2</name>
+      <pose>10 5 0 0 0 0</pose>
+    </include>
+
+    <!-- ========== 消防水管 ========== -->
+    <include>
+      <uri>model://fire_hose_long</uri>
+      <name>hose</name>
+      <pose>-3 -12 0 0 0 0.5</pose>
+    </include>
+
+    <!-- ========== 火源 1 - 大火 ========== -->
+    <model name="fire_1">
+      <static>true</static>
+      <pose>10 0 1 0 0 0</pose>
+      <link name="link">
+        <visual name="core">
+          <geometry><box><size>3 3 2</size></box></geometry>
+          <material>
+            <ambient>1 0.3 0 1</ambient>
+            <diffuse>1 0.4 0 1</diffuse>
+            <emissive>1 0.5 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="fire_1_top">
+      <static>true</static>
+      <pose>10 0 2.5 0 0 0</pose>
+      <link name="link">
+        <visual name="glow">
+          <geometry><box><size>2 2 1</size></box></geometry>
+          <material>
+            <ambient>1 0.6 0.1 0.8</ambient>
+            <diffuse>1 0.7 0.2 0.8</diffuse>
+            <emissive>1 0.8 0.3 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== 火源 2 - 中火 ========== -->
+    <model name="fire_2">
+      <static>true</static>
+      <pose>-8 8 0.7 0 0 0</pose>
+      <link name="link">
+        <visual name="core">
+          <geometry><cylinder><radius>1.5</radius><length>1.4</length></cylinder></geometry>
+          <material>
+            <ambient>1 0.25 0 1</ambient>
+            <diffuse>1 0.35 0 1</diffuse>
+            <emissive>1 0.45 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="fire_2_top">
+      <static>true</static>
+      <pose>-8 8 1.8 0 0 0</pose>
+      <link name="link">
+        <visual name="glow">
+          <geometry><cylinder><radius>1</radius><length>0.8</length></cylinder></geometry>
+          <material>
+            <ambient>1 0.7 0.2 0.7</ambient>
+            <diffuse>1 0.8 0.3 0.7</diffuse>
+            <emissive>1 0.9 0.4 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== 火源 3 - 小火 ========== -->
+    <model name="fire_3">
+      <static>true</static>
+      <pose>5 12 0.5 0 0 0</pose>
+      <link name="link">
+        <visual name="core">
+          <geometry><box><size>1.2 1.2 1</size></box></geometry>
+          <material>
+            <ambient>1 0.4 0 1</ambient>
+            <diffuse>1 0.5 0.1 1</diffuse>
+            <emissive>1 0.6 0.2 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== 烟雾区域 ========== -->
+    <model name="smoke_1">
+      <static>true</static>
+      <pose>10 0 5 0 0 0</pose>
+      <link name="link">
+        <visual name="smoke">
+          <geometry><box><size>6 6 4</size></box></geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 0.25</ambient>
+            <diffuse>0.35 0.35 0.35 0.25</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="smoke_2">
+      <static>true</static>
+      <pose>-8 8 4 0 0 0</pose>
+      <link name="link">
+        <visual name="smoke">
+          <geometry><cylinder><radius>3</radius><length>4</length></cylinder></geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 0.2</ambient>
+            <diffuse>0.4 0.4 0.4 0.2</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== 碎片和障碍物 ========== -->
+    <model name="debris_1">
+      <static>true</static>
+      <pose>8 3 0.4 0.1 0 0.5</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>2 1.5 0.8</size></box></geometry></collision>
+        <visual name="vis">
+          <geometry><box><size>2 1.5 0.8</size></box></geometry>
+          <material><ambient>0.2 0.18 0.15 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="debris_2">
+      <static>true</static>
+      <pose>12 -3 0.3 0 0.1 0.8</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1.5 1 0.6</size></box></geometry></collision>
+        <visual name="vis">
+          <geometry><box><size>1.5 1 0.6</size></box></geometry>
+          <material><ambient>0.25 0.2 0.18 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="burned_beam">
+      <static>true</static>
+      <pose>6 5 0.25 0 0.15 1.2</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>4 0.3 0.5</size></box></geometry></collision>
+        <visual name="vis">
+          <geometry><box><size>4 0.3 0.5</size></box></geometry>
+          <material><ambient>0.1 0.08 0.06 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== 路障 ========== -->
+    <model name="barrier_1">
+      <static>true</static>
+      <pose>0 -8 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>4 0.3 1</size></box></geometry></collision>
+        <visual name="vis">
+          <geometry><box><size>4 0.3 1</size></box></geometry>
+          <material><ambient>1 0.5 0 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
