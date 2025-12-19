@@ -9,26 +9,26 @@ echo "      无人机仿真 - 场景选择启动"
 echo "=========================================="
 echo ""
 echo "可用场景:"
-echo "  1. warehouse      - 仓库（室内避障）⭐推荐"
-echo "  2. baylands       - 湾区（户外导航）⭐推荐"
-echo "  3. empty          - 空地（基础测试）"
-echo "  4. sonoma_raceway - 赛道（围栏环境）"
-echo "  5. mcmillan       - 机场（大型户外）"
-echo "  6. boat           - 船舶（海上测试）"
-echo "  7. windy          - 有风环境"
+echo "  1. indoor_room    - 室内房间（四面墙+障碍物）⭐推荐"
+echo "  2. warehouse      - 仓库（货架场景）"
+echo "  3. baylands       - 湾区（户外导航）"
+echo "  4. empty          - 空地（基础测试）"
+echo "  5. sonoma_raceway - 赛道（围栏环境）"
+echo "  6. mcmillan       - 机场（大型户外）"
+echo "  7. boat           - 船舶（海上测试）"
 echo ""
 echo "=========================================="
 read -p "选择场景 (1-7，默认1): " choice
 
 case $choice in
-    1|"") WORLD="warehouse" ;;
-    2) WORLD="baylands" ;;
-    3) WORLD="empty" ;;
-    4) WORLD="sonoma_raceway" ;;
-    5) WORLD="mcmillan_airfield" ;;
-    6) WORLD="boat" ;;
-    7) WORLD="windy" ;;
-    *) WORLD="warehouse" ;;
+    1|"") WORLD="indoor_room" ;;
+    2) WORLD="warehouse" ;;
+    3) WORLD="baylands" ;;
+    4) WORLD="empty" ;;
+    5) WORLD="sonoma_raceway" ;;
+    6) WORLD="mcmillan_airfield" ;;
+    7) WORLD="boat" ;;
+    *) WORLD="indoor_room" ;;
 esac
 
 echo ""
@@ -60,6 +60,14 @@ echo ""
 echo "停止已有仿真进程..."
 killall -9 px4 gzserver gzclient 2>/dev/null
 sleep 2
+
+# 复制自定义场景到 PX4 目录（如果存在）
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+if [ -f "$PROJECT_DIR/worlds/indoor_room.world" ]; then
+    cp "$PROJECT_DIR/worlds/indoor_room.world" ~/PX4-Autopilot/Tools/sitl_gazebo/worlds/
+    echo "已复制 indoor_room.world 到 PX4 目录"
+fi
 
 # 设置环境
 cd ~/PX4-Autopilot
