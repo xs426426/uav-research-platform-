@@ -27,11 +27,11 @@ echo ""
 read -p "选择场景 (1-4，默认1): " choice
 
 case $choice in
-    1|"") WORLD="hospital"; X=-10; Y=-15; Z=0.5 ;;
-    2) WORLD="small_warehouse"; X=-3; Y=-3; Z=0.5 ;;
-    3) WORLD="bookstore"; X=-5; Y=-5; Z=0.5 ;;
-    4) WORLD="empty"; X=0; Y=0; Z=0.5 ;;
-    *) WORLD="hospital"; X=-10; Y=-15; Z=0.5 ;;
+    1|"") WORLD="hospital"; X=0; Y=0; Z=0.3 ;;
+    2) WORLD="small_warehouse"; X=0; Y=0; Z=0.3 ;;
+    3) WORLD="bookstore"; X=0; Y=0; Z=0.3 ;;
+    4) WORLD="empty"; X=0; Y=0; Z=0.3 ;;
+    *) WORLD="hospital"; X=0; Y=0; Z=0.3 ;;
 esac
 
 echo ""
